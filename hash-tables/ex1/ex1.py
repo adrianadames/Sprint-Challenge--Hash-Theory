@@ -13,19 +13,25 @@ def get_indices_of_item_weights(weights, limit):
   #step 2: populate weights_dict hash table with the weights in weights as keys and the index of the weight in the array as the corresponding value.
   for i in range(0,len(weights)-1):
     weight = weights[i]
-    if limit-weight in weights:
+    # print(weight)
+    # print(limit-weight)
+    if limit-weight in weights_dict:
+      # print("limit-weight is in weights")
       if i >= weights_dict[limit-weight]:
-        print(i, weights_dict[limit-weight])
+        # print(i, weights_dict[limit-weight])
         return (i, weights_dict[limit-weight])
       else:
-        print(weights_dict[limit-weight], i)
+        # print(weights_dict[limit-weight], i)
         return (weights_dict[limit-weight], i)
     else: 
       weights_dict[weight] = i
-    return () 
+      # print(weights_dict[weight])
+  return () 
 
 
-print(get_indices_of_item_weights([4, 6, 10, 15, 16], 21))
+weights_test = [4, 6, 10, 15, 16]
+limit_test = 21
+print(get_indices_of_item_weights(weights_test, limit_test))
 
 
 if __name__ == '__main__':
