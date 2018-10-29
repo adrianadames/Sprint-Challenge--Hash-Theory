@@ -6,8 +6,27 @@
 
 # Your solution should run in linear time.
 
+#given the list weights of item weights, return the index of the two weights (as a tuple) that add up to limit
 def get_indices_of_item_weights(weights, limit):
-  pass 
+  #step 1: instantiate hash table
+  weights_dict = {}
+  #step 2: populate weights_dict hash table with the weights in weights as keys and the index of the weight in the array as the corresponding value.
+  for i in range(0,len(weights)-1):
+    weight = weights[i]
+    if limit-weight in weights:
+      if i >= weights_dict[limit-weight]:
+        print(i, weights_dict[limit-weight])
+        return (i, weights_dict[limit-weight])
+      else:
+        print(weights_dict[limit-weight], i)
+        return (weights_dict[limit-weight], i)
+    else: 
+      weights_dict[weight] = i
+    return () 
+
+
+print(get_indices_of_item_weights([4, 6, 10, 15, 16], 21))
+
 
 if __name__ == '__main__':
   # You can write code here to test your implementation using the Python repl
