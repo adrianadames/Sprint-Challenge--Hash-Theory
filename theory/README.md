@@ -45,7 +45,7 @@ both `antelope` and `antelopes`.)
   812-2-10
 
 
-Answer:/\d{1,4}-\d{1,2}-\d{1,2}/g
+Answer: /\d{1,4}-\d{1,2}-\d{1,2}/g
 
 
 ## State Machines
@@ -60,9 +60,20 @@ Answer:/\d{1,4}-\d{1,2}-\d{1,2}/g
   Remember the ε transition can be used to move between states without
   consuming input. 
 
+
+  -match the letter a
+  -match the letter b zero or more times
+  -match the letter c one or more times
+  -match the letter d zero or one time
+  -match the letter e or the letter f
+
+  Answer: See regexStateMachine.png in this directory
+
 * A lion can be sleeping, eating, hunting, or preening. Draw a state
   machine diagram for the lion and label the transition events that
   cause state transitions.
+
+   Answer: See lionStateMachine.png in this directory
 
 * The VT-100 terminal (console) outputs text to the screen as it
   receives it over the wire. One exception is that when it receives an
@@ -81,6 +92,14 @@ Answer:/\d{1,4}-\d{1,2}-\d{1,2}/g
     cursor position should accept any digits for the row and column. The
     bold sequence need only accept `1` (and is a trivial regex). (ESC is
     a single character which can be represented with `\e` in the regex.)
+
+    Answer: 
+        -For moving cursor to specified position: 
+            /\\\d+;\d+[f]/g
+        
+        -For changing font to bold:
+            /[1][m]/g
+
 
   * Draw a state machine diagram for a VT-100 that can consume regular
     character sequences as well as the two above ESC sequences.
